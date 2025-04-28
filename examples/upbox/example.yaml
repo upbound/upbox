@@ -1,0 +1,13 @@
+apiVersion: aws.platform.upbound.io/v1alpha1
+kind: Upbox
+metadata:
+  name: example
+spec:
+  parameters:
+    company: mmc
+    owner: team-platform
+    networkId: upbox-aws-network
+    size: micro
+    publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKoZQbAbTmEQmFzsRwY1Qc9WEY3EPuryShqu1whWYCDt tobias.kasser@upbound.io"
+    amiId: "ami-0ed58ee98310859ee"
+    zone: a

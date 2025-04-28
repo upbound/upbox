@@ -1,0 +1,68 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: upboxsets.aws.platform.upbound.io
+spec:
+  group: aws.platform.upbound.io
+  names:
+    categories:
+    - crossplane
+    kind: UpboxSet
+    plural: upboxsets
+  versions:
+  - name: v1alpha1
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        description: UpboxSet is the Schema for the UpboxSet API.
+        properties:
+          spec:
+            description: UpboxSetSpec defines the desired state of UpboxSet.
+            properties:
+              parameters:
+                properties:
+                  company:
+                    type: string
+                    description: The company of who this will be assigned to.
+                  owner:
+                    type: string
+                    description: The team or person at Upbound responsible.
+                  networkId:
+                    type: string
+                    description: Identity of underlying network.
+                  amiId:
+                    type: string
+                    description: Identity of Amazon Machine Image
+                  size:
+                    type: string
+                    description: Size of the instance to create.
+                    enum:
+                      - micro
+                      - small
+                    default: small
+                  providerConfigName:
+                    type: string
+                    default: default
+                  zone:
+                    type: string
+                    default: "a"
+                  users:
+                    type: object
+                    additionalProperties:
+                      type: object
+                      properties:
+                        publicKey:
+                          type: string
+                          description: Public SSH key to upload.
+                required:
+                  - company
+                  - owner
+                type: object
+            type: object
+          status:
+            description: UpboxSetStatus defines the observed state of UpboxSet.
+            type: object
+        required:
+        - spec
+        type: object
+    served: true

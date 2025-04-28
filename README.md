@@ -1,19 +1,49 @@
-# cloud-lab
-Automation and Exploration For Providing a Cloud Lab for 3rd Party Devs and Training Attendees
+# Upbox
 
-## Todo
-- Create claims for first attendee group
+Upbox is a solution for providing automated cloud lab environments for 3rd Party Developers and Training Attendees.
 
-## Initial Flow
-- `make install-configurations`
-- `make claim-network`
-- Add claims to `examples\companies` for upboxes as needed.
-- `make claim-upboxes`
-- Get connection info with `make access-info`
+## Prerequisites
+
+- AWS Provider Configuration
+- XNetwork resource (provides VPC, subnet, and security group infrastructure)
+
+## Quick Start
+
+1. Set up the network infrastructure:
+   ```bash
+   kubectl apply -f examples/configuration-aws-network.yaml
+   kubectl apply -f examples/xnetwork.yaml
+   ```
+
+2. Create an UpboxSet (for training sessions) or individual Upboxes:
+   ```bash
+   # For a training session with multiple participants
+   kubectl apply -f examples/upboxset/example.yaml
+   
+   # For an individual lab environment
+   kubectl apply -f examples/upbox/example.yaml
+   ```
 
 ## Network
 
-After claiming the network a trace should show the following.
+The Upbox resources link to the XNetwork infrastructure using a network ID parameter. When creating an Upbox or UpboxSet, you need to reference the network via the `networkId` parameter.
+
+### Network Reference
+
+In your Upbox or UpboxSet configuration, include a reference to the network ID:
+
+```yaml
+# Sample configuration showing network reference
+spec:
+  parameters:
+    networkId: upbox-aws-network
+```
+
+This parameter links the Upbox resources to the correct network infrastructure.
+
+### Network Trace
+
+After claiming the network a trace should show the following:
 
 ```
 crossplane beta trace xnetwork.aws.platform.upbound.io/upbox-aws-network
@@ -33,28 +63,122 @@ XNetwork/upbox-aws-network                             True     True    Availabl
 └─ VPC/upbox-aws-network-zjdlc                         True     True    Available
 ```
 
-## Upbox
+## Upbox Resources
 
-```
-crossplane beta trace xupbox.aws.platform.upbound.io/upbox-upbound-markus-schweig
-NAME                                             SYNCED   READY   STATUS
-XUpbox/upbox-upbound-markus-schweig              -        -
-├─ Instance/upbox-upbound-markus-schweig-r8tfg   True     True    Available
-└─ KeyPair/upbox-upbound-markus-schweig          True     True    Available
+### UpboxSet
+
+The `UpboxSet` resource provides a way to create multiple Upboxes for a training session or group environment. It automatically creates individual Upbox resources for each user based on the configuration provided.
+
+Key features:
+- Creates multiple Upboxes in a single resource
+- All Upboxes share the same network infrastructure
+- Users are specified with their SSH public keys
+
+Example UpboxSet configuration:
+```yaml
+apiVersion: aws.platform.upbound.io/v1alpha1
+kind: UpboxSet
+metadata:
+  name: example
+spec:
+  parameters:
+    company: upbound
+    owner: team-solutions
+    networkId: upbox-aws-network
+    users:
+      tobias:
+        publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5..."
+      yury:
+        publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5..."
 ```
 
-Find the upbox AWS endpoint in the MR instance yaml.
-Connect to your upbox using ssh as follows:
+The UpboxSet controller creates individual Upboxes for each user with their respective SSH keys.
 
+Trace command:
 ```
-ssh -v ec2-user@ec2-54-224-10-88.compute-1.amazonaws.com
+$> crossplane beta trace upboxset example
+NAME                                                        SYNCED   READY   STATUS
+UpboxSet/example                                            True     True    Available
+├─ Upbox/upbound-team-solutions-tobias                      True     True    Available
+│  ├─ Instance/example-sk982                                True     True    Available
+│  ├─ KeyPair/upbox-upbound-upbound-team-solutions-tobias   True     True    Available
+│  ├─ SecurityGroupRule/example-k85l7                       True     True    Available
+│  ├─ SecurityGroupRule/example-wmg2t                       True     True    Available
+│  └─ SecurityGroup/example-zhps7                           True     True    Available
+└─ Upbox/upbound-team-solutions-yury                        True     True    Available
+   ├─ Instance/example-5qjz5                                True     True    Available
+   ├─ KeyPair/upbox-upbound-upbound-team-solutions-yury     True     True    Available
+   ├─ SecurityGroupRule/example-8zwhl                       True     True    Available
+   ├─ SecurityGroupRule/example-tnj2z                       True     True    Available
+   └─ SecurityGroup/example-zs2rw                           True     True    Available
+```
+
+### Individual Upbox
+
+An `Upbox` resource creates a single lab environment with an EC2 instance and associated resources.
+
+Example Upbox configuration:
+```yaml
+apiVersion: aws.platform.upbound.io/v1alpha1
+kind: Upbox
+metadata:
+  name: upbound-team-solutions-tobias
+spec:
+  parameters:
+    company: upbound
+    owner: team-solutions
+    networkId: upbox-aws-network
+    publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5..."
+```
+
+Trace command:
+```
+$> crossplane beta trace upbox upbound-team-solutions-tobias
+NAME                                                     SYNCED   READY   STATUS
+Upbox/upbound-team-solutions-tobias                      True     True    Available
+├─ Instance/example-sk982                                True     True    Available
+├─ KeyPair/upbox-upbound-upbound-team-solutions-tobias   True     True    Available
+├─ SecurityGroupRule/example-k85l7                       True     True    Available
+├─ SecurityGroupRule/example-wmg2t                       True     True    Available
+└─ SecurityGroup/example-zhps7                           True     True    Available
 ```
 
 ### Access Info
 
+You can retrieve the SSH connection information for Upboxes by filtering with labels:
+
+```bash
+COMPANY=upbound OWNER=team-solutions
+kubectl get upbox \
+    -l upbox.aws.platform.upbound.io/company=$COMPANY \
+    -l upbox.aws.platform.upbound.io/owner=$OWNER -oyaml \
+    | yq '.items[] | "\(.metadata.name): \"ssh ubuntu@\(.status.publicIp)\""'
 ```
-make access-info
-upbox-upbound-mark-d5z4t: ssh ec2-user@ec2-54-152-160-63.compute-1.amazonaws.com
-upbox-upbound-markus-schweig-2-vqkdl: ssh ec2-user@ec2-3-84-88-251.compute-1.amazonaws.com
-upbox-upbound-markus-schweig-dxpg4: ssh ec2-user@ec2-54-81-90-57.compute-1.amazonaws.com
-```
+
+## Architecture
+
+Upbox uses Crossplane compositions to create managed AWS resources:
+
+- `UpboxSet` - Creates multiple Upboxes for a training session
+- `Upbox` - Creates an individual lab environment with EC2 instance and security group
+- `XNetwork` - Creates the underlying VPC network infrastructure
+
+## AMI Automation
+
+The AMI images used for Upboxes are automatically built and updated:
+
+- Built using Packer automation
+- AMI IDs are tracked in GitHub Actions workflow runs
+- CI/CD with GitHub Actions:
+  - Pull requests build on staging account (crossplane playground)
+  - Main branch builds on production account (upbox)
+  
+For the latest AMI ID to use in your configurations, check the most recent workflow run in GitHub Actions.
+
+## Troubleshooting
+
+If you encounter issues with your Upbox environments:
+
+1. Check the resource status with `crossplane beta trace`
+2. Verify networking setup is complete
+3. Ensure AWS provider is properly configured

@@ -1,0 +1,72 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: upboxes.aws.platform.upbound.io
+spec:
+  group: aws.platform.upbound.io
+  names:
+    categories:
+    - crossplane
+    kind: Upbox
+    plural: upboxes
+  versions:
+  - name: v1alpha1
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        description: Upbox is the Schema for the Upbox API.
+        properties:
+          spec:
+            description: UpboxSpec defines the desired state of Upbox.
+            properties:
+              parameters:
+                description: Upbox Parameters
+                properties:
+                  company:
+                    type: string
+                    description: The company of who this will be assigned to.
+                  owner:
+                    type: string
+                    description: The team or person at Upbound responsible.
+                  networkId:
+                    type: string
+                    description: Identity of underlying network.
+                  amiId:
+                    type: string
+                    description: Identity of Amazon Machine Image
+                  size:
+                    type: string
+                    description: Size of the instance to create.
+                    enum:
+                      - micro
+                      - small
+                    default: small
+                  publicKey:
+                    type: string
+                    description: Public SSH key to upload.
+                  providerConfigName:
+                    type: string
+                    default: default
+                  zone:
+                    type: string
+                    default: "a"
+                required:
+                  - company
+                  - owner
+                  - publicKey
+                type: object
+            type: object
+          status:
+            description: UpboxStatus defines the observed state of Upbox.
+            type: object
+            properties:
+              id:
+                type: string
+              instanceId:
+                type: string
+              publicIp:
+                type: string
+        required:
+        - spec
+        type: object
+    served: true
