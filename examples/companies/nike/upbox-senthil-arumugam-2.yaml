@@ -1,7 +1,7 @@
 apiVersion: aws.platform.upbound.io/v1alpha1
 kind: Upbox
 metadata:
-  name: upbox-upbound-markus-schweig-2
+  name: upbox-nike-senthil-arumugam-2
   annotations:
     render.crossplane.io/composition-path: apis/upbox/composition.yaml
     render.crossplane.io/function-path: examples/functions.yaml
@@ -10,10 +10,12 @@ spec:
   # To connect from the AWS Console to the instance, see
   # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-prerequisites.html
   parameters:
-    name: markus-schweig-2
-    company: upbound
-    owner: team-solutions-architects
+    # email: Senthil.Arumugam@nike.com
+    name: senthil-arumugam-2
+    company: nike
+    owner: team-nike-platform
     networkId: upbox-aws-network
-    amiId: ami-0bee6b33d20556794 # old AMI for ssh tests
-    size: micro
+    amiId: ami-0eab2975347a21ff0 # upbox-2025-3-23-v2
+    size: medium
     publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPPnjJrm0lsdelQifFC7lbRk8g/au4gdFKHDHcMV0NESuYO4wp0eVInQNQZIpC7onNZVK8nWJc9gggrThS1dNSI5W7J6xTwOZVYkvVicjjSpw9QG3czdBnU1Ywg52bFXbW7PoR79mpTKfMH8uY06jLZZUoFRO0E3misQUQCit/4UM3+YJHDFwvgySSb88HRduVFNslUwGCKzIFl4Ogbk9qNkmcT1o6Je+DLf+PmnbFxWur3NWuu9yLqPmyBbD2pdoCvKfaHtkilUUxw3Jeamq20emHt8o7z+QPCjrrk/Z5Qi3XUsglwTzMkz9AuuLMXPI1eKmgaj5wMyZvONg53w1P40LcrqBW1GbAa28+DIT6ucmb92bgzh9lJM4C55ONKqFaaA6UR1DY/jAq/zDR/w8tIfbyl4iTuJSRMnHEprhZBSB2gmwvT1ZShktUIEp0leWoU1SQgMdol0d13MaynmQxGsTUq8IhI84QFfWw7XuFgd8cd5SKi85Qb3l4TGq6zX8= markuss@Markuss-MacBook-Pro.local
+    #publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCpddreS01Rvr8GOgNBWmrfpmkrIzebWEq3ngSedHTMbRXN4KBedwbAi0qHrqIZUTGPSoo52KfxK0+/xFF8UZO3L5GZw4L2VZ3KtmB3M7U6XbkwuoSTO39JQj3/4hYoAUKpxcgZiDYw0nOc9npDL5mdvNFlmM6d0bZrGo7hIP8tHAUPiY6zD8gINc9FIS7aCsB262UxwL70ahV5KNZhE+24eYi/uzx13J6HfRuEYqCb0fZNEWXfQtzgMBl106rCvOHv9fk1vrYklYCIOAKOti7ceRmzUQwvCfT8w2HeKwuTIClaAJkR8L1SCBbvkBIr4SNzY00dJ3o0F1Vlr868csQOQ2dLWPKWFLoXciM05pyVw3HuDSUE0i2dNz234SdfTdyoFILfxCgLCsQlKUo4xlUG0kFVIIqVm/GhGr+4TeDcDeo+8EwqnQ0+/3XDBceiLFga3BxRKQSJ7vHAqpzkRGHMGWNvKcftReq8EbWFINX9B9UEUnmNB9MEJNJQP/cl/dE= saru11@APFWN7FQ7E776E

@@ -1,0 +1,20 @@
+apiVersion: aws.platform.upbound.io/v1alpha1
+kind: Upbox
+metadata:
+  name: upbox-nike-maciej-iwanowski
+  annotations:
+    render.crossplane.io/composition-path: apis/upbox/composition.yaml
+    render.crossplane.io/function-path: examples/functions.yaml
+    render.crossplane.io/definition-path: apis/upbox/definition.yaml
+spec:
+  # To connect from the AWS Console to the instance, see
+  # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-prerequisites.html
+  parameters:
+    # email: Maciej.Iwanowski@nike.com
+    name: maciej-iwanowski
+    company: nike
+    owner: team-nike-platform
+    networkId: upbox-aws-network
+    amiId: ami-0eab2975347a21ff0 # upbox-2025-3-23-v2
+    size: medium
+    publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCraHV52zfjzdva0lRv/ZeZ/64ms76475p+s7hH7rNZ/quon+8zSMn3rNo/fEIN4AVLVJAefsWuNlt6ExhvSDDTnogXE4Ej9rHqBWPXOaTIUqwgZbeR259sCapII5KOsFuWdXP5Fm541z5QFJuCJmdHVlem0L8sbYgxw4/hjV56/QqAFCSU+ULDEBOn/x/wyKuXJO93FflO3Eb5GGxRM+X131+QW6Wuk9/a2qDUIsdmOgF0olLvMHOjhTl/tTCmmAcMwuTmXDScWdsrl32IClEOf2OHW5Fq7/ATlYcEdQGMpNZQtNH9gTQijimkjZb8zHiH/AecK8gh4hMsg1xgGIDbnc5Lq2CQKe9yv85+wrlGWxyPxjIJXL0Fz+aiQcfoeEH5SvZrLUCtJdERk60xsIMLfYq9ao2wHD1CxzXUAhZVi+gCIl+gx47fITcqt8ExM0twpa4vn6ypsqMIUwE28Z96ik2AV3XUlO2x+cgnIYiD3Z/wPi3YEhFH5GDtvcc+edM= MIwano@AP5MMD6R3F1ABB

@@ -1,0 +1,21 @@
+apiVersion: aws.platform.upbound.io/v1alpha1
+kind: Upbox
+metadata:
+  name: upbox-nike-bharat-sadhu
+  annotations:
+    render.crossplane.io/composition-path: apis/upbox/composition.yaml
+    render.crossplane.io/function-path: examples/functions.yaml
+    render.crossplane.io/definition-path: apis/upbox/definition.yaml
+spec:
+  # To connect from the AWS Console to the instance, see
+  # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-prerequisites.html
+  parameters:
+    # email: Venkatabharat.Manikanta@nike.com # Yes, correct even though
+    # different from name.
+    name: bharat-sadhu
+    company: nike
+    owner: team-nike-platform
+    networkId: upbox-aws-network
+    amiId: ami-0eab2975347a21ff0 # upbox-2025-3-23-v2
+    size: medium
+    publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCwY7LC/ABo4xRvIf+8PgU3Nb8tqepPHfr7jlZf+DFRZxIbpn98qhCFZD+wQUo3O6+Ij0lq2pHyLnYuLuau5l1IbJFtR4RQ/CpBush5gEAkSL/yW5glO89kB1ATbVuqIOWV+d1Yd3oFSWPVbwBxw36UDRJESKWWcAr+p1cz9Jz72LSzYuVeixiLHCDZB8FNCsiczN6xQqNLHeATEw7XMmvW27UZ124tioue8Jp1LzpzMUTHO6YYFjCqt/Jt11JB/+zuhTtSpSNYxp1QjAQXGCwsPPGFFXQZRY2Lbh2HcJ40dy1abFzV6p+BaftGvPkeZ2N/LC7klyRpCRGNw/peXQu+IJdGsSIs6N1PrTPr1lERr+9RgouBUQqmwb8E36iq0SYQs2HG7EQXd3D6jHs5POvYjPHXZbyHc3PdsyjUqsiRAVHjCmg4R57CTgE3oaMfmDiNIZyO3th3Kr4uMHfvvEbJnS4eZiblh0Qi+1+cPofcUpNzAlPZ8clLQ9tuTWStT5ZTKr5elvjeK2uD7bV4B9qHV2A0951ATsuKqdgR1SSET+DfenZ6irXHdQBMJLFFGflHR7CTSXhYsS40BLZ3qtfq/qZxA9rNebLeGyPQfuAVq1iWlrzB02rYZ6BXLlIZPoMoX/UoZ0D7aZiRkYtAVKmMky5+chO/HPvEI+CXwZsMjQ== vmani2@AP4WQ65W2E9F11

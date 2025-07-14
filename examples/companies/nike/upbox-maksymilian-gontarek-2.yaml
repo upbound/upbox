@@ -1,7 +1,7 @@
 apiVersion: aws.platform.upbound.io/v1alpha1
 kind: Upbox
 metadata:
-  name: upbox-upbound-markus-schweig-2
+  name: upbox-nike-maksymilian-gontarek-2
   annotations:
     render.crossplane.io/composition-path: apis/upbox/composition.yaml
     render.crossplane.io/function-path: examples/functions.yaml
@@ -10,10 +10,12 @@ spec:
   # To connect from the AWS Console to the instance, see
   # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-prerequisites.html
   parameters:
-    name: markus-schweig-2
-    company: upbound
-    owner: team-solutions-architects
+    # email: Maksymilian.Gontarek@nike.com
+    name: maksymilian-gontarek-2
+    company: nike
+    owner: team-nike-platform
     networkId: upbox-aws-network
-    amiId: ami-0bee6b33d20556794 # old AMI for ssh tests
-    size: micro
+    amiId: ami-0eab2975347a21ff0 # upbox-2025-3-23-v2
+    size: medium
     publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPPnjJrm0lsdelQifFC7lbRk8g/au4gdFKHDHcMV0NESuYO4wp0eVInQNQZIpC7onNZVK8nWJc9gggrThS1dNSI5W7J6xTwOZVYkvVicjjSpw9QG3czdBnU1Ywg52bFXbW7PoR79mpTKfMH8uY06jLZZUoFRO0E3misQUQCit/4UM3+YJHDFwvgySSb88HRduVFNslUwGCKzIFl4Ogbk9qNkmcT1o6Je+DLf+PmnbFxWur3NWuu9yLqPmyBbD2pdoCvKfaHtkilUUxw3Jeamq20emHt8o7z+QPCjrrk/Z5Qi3XUsglwTzMkz9AuuLMXPI1eKmgaj5wMyZvONg53w1P40LcrqBW1GbAa28+DIT6ucmb92bgzh9lJM4C55ONKqFaaA6UR1DY/jAq/zDR/w8tIfbyl4iTuJSRMnHEprhZBSB2gmwvT1ZShktUIEp0leWoU1SQgMdol0d13MaynmQxGsTUq8IhI84QFfWw7XuFgd8cd5SKi85Qb3l4TGq6zX8= markuss@Markuss-MacBook-Pro.local
+    #publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDlN3ZJHf4uJVpCWNC18qgT/elikWi9rcsVZAsLwob5V7ziWSzEiCqUI8S5zCBp3SPURXffVUCas0T4ypqAWkAEmUgN90tcdcjyoTWtY8stmZ7wq12nkTXKlJq/AhZfxQNuORtL4NFtzOGHDBovWpdvkjGEQ9jf+am8Md/wIm+7+fTrRzBswbWLdXX+ntRYZCdVu7yUxpyDhjCZ/ylCkHrbmA1HxAyGuHumkWk0koVSZgphpgmCcYGb+OQVHlmUsK3TQaRa4/kEGTyFBWQTtueAm1lSI4HW2APd8SNQ3qz9JS5VY0bVZh9EJFxJZy7LnzLfaOse+gNHLHVKzUBB6r7UVvLLzVjQI1+bvcuolOHW665Bk7f00+JG58hKUjJCIuci83dS9iOU8KElR5ZtFGfioxqmUTjpTxae3+PgrkcuiyRq5pVz/bLivdXi5/ssboqcPAM2g2pVlz2Mhqn1vSWosn1YJ5p1KEaN31rD3rN2n8geLxWkePxAxEK9bkumS/k= mgonda@APRLFJPQ073530

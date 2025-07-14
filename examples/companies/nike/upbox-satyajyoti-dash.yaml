@@ -1,0 +1,20 @@
+apiVersion: aws.platform.upbound.io/v1alpha1
+kind: Upbox
+metadata:
+  name: upbox-nike-satyajyoti-dash
+  annotations:
+    render.crossplane.io/composition-path: apis/upbox/composition.yaml
+    render.crossplane.io/function-path: examples/functions.yaml
+    render.crossplane.io/definition-path: apis/upbox/definition.yaml
+spec:
+  # To connect from the AWS Console to the instance, see
+  # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-prerequisites.html
+  parameters:
+    # email: Satyajyoti.Dash@nike.com
+    name: satyajyoti-dash
+    company: nike
+    owner: team-nike-platform
+    networkId: upbox-aws-network
+    amiId: ami-0eab2975347a21ff0 # upbox-2025-3-23-v2
+    size: medium
+    publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCrBaoVHZZqikKk713gvTabK7NaehRJPMV4EOtpuMYR8LfSaPNcs4XTPUS+ReMsKDcX+rGi5Okv4bLFq+L8NWKfNc+tEngDo/lcwrvUY+6nI9oqqDHDzx3Qh9uVnsMLQE0Xd7VGFE66hMYDiJhMzD5SoqpGr8H3X2qiyheZzSKBP7xbnlhoRd2XHrAlUU6+jnqeGAr0EBsHsGxFScDIbntkNvotL9A9XamD5JMADA4rhrhVQanpITV4+DIA+9XxgcV1Ngwuqwx+6GB41eJVB4+uc3LiOXF1R4MnD0mQxRgVbRR9Iw36xahBNAxgw3xQpLGXi62ECAsesRZl6lqkdm54tl7sYkYLdUPmgcvYwHR5XMQeEEGqq6wRgF+LROCbGEEcsRTtBrcq3spBxUwwSPl5sNieid3Bxp2X/ORkrhL/gDVX3pOEVOtuJhX1EjQ/0mCuprM0lzhiigSNY2RplkbBCEnVNfG0Zsd+FLc/fsloBhDXZEY7szzoc69gucpKsN3EtdTh9IUg1sQmGnUvMSbl0mO3gSGmvuJRx61eXLPRYix9PUlci5CTCfmkzXhAYotMRTZBQmrAio8bHM1QWYejqj4GBdqRrhyxH1J6ynMwm0VZkcLbWuAgMUAc3vrMhUUvJqSWYTT6tI9geEFRQC7fDBaiXAH0HRsErnuGUDhnNQ== sdash4@AP07Q0CVEDEADC

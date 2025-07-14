@@ -1,0 +1,20 @@
+apiVersion: aws.platform.upbound.io/v1alpha1
+kind: Upbox
+metadata:
+  name: upbox-nike-joanna-koniszewska
+  annotations:
+    render.crossplane.io/composition-path: apis/upbox/composition.yaml
+    render.crossplane.io/function-path: examples/functions.yaml
+    render.crossplane.io/definition-path: apis/upbox/definition.yaml
+spec:
+  # To connect from the AWS Console to the instance, see
+  # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-prerequisites.html
+  parameters:
+    # email: Joanna.Koniszewska@nike.com
+    name: joanna-koniszewska
+    company: nike
+    owner: team-nike-platform
+    networkId: upbox-aws-network
+    amiId: ami-0eab2975347a21ff0 # upbox-2025-3-23-v2
+    size: medium
+    publicKey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHxR+9vNaCcP3lLVA/btflSPaE9ycGbL9SODpml5VyU joanna.koniszewska@nike.com

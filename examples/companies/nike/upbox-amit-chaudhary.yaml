@@ -1,0 +1,20 @@
+apiVersion: aws.platform.upbound.io/v1alpha1
+kind: Upbox
+metadata:
+  name: upbox-nike-amit-chaudhary
+  annotations:
+    render.crossplane.io/composition-path: apis/upbox/composition.yaml
+    render.crossplane.io/function-path: examples/functions.yaml
+    render.crossplane.io/definition-path: apis/upbox/definition.yaml
+spec:
+  # To connect from the AWS Console to the instance, see
+  # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-prerequisites.html
+  parameters:
+    # Email: Amit.Chaudhary@nike.com
+    name: amit-chaudhary
+    company: nike
+    owner: team-nike-platform
+    networkId: upbox-aws-network
+    amiId: ami-0eab2975347a21ff0 # upbox-2025-3-23-v2
+    size: medium
+    publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCt+ZMXEpvaHdGi/CHhV0rSOCOy9x/248mzMk2Yhv0ocmdkjkI7U1ld8T9hbZHq+do3xUKexAyDWqxsf0sdmwKlbxxkCgXYMw/DDLvbD3OVPfEvYl3S2/1lbGRQstSEhi4Fuh6qlRia0kbHR838sTX9B6dRND7rgHnp3QJgmDYRsuEDMhzNntSYDyvyT0ZVYs31x+V3DJxkkFDYU2nz+RVdbwfY6yq2NUkvXIR/jilNhho9/fB5w7K0viHi3OMvmPT3NRRwdli2sr9qH5zDq92WApOgFf+L6Ct6Z5hL8v4VZq5lyHzllU65HaHASk7Nxk090aAn2YZ2xrYWkF6mLv7a1fyAhdIGd6E3t+uZyLDEYLF6M0KJ9sgsY/EGiAdJ9/o/D4Bo1/Q6hPzy3SaK2azPyN29ysChVdSDDSuQDfvf0I2Q7+wtU9DvdQ9yFolKuEO6ohRLmVRuGPnkgHHCfFjWaO2CqW/C3HyaIBoD2j47rhUhIezHVDzoJB4K1U30s7s= ACh220@APSEMD6M23EE39

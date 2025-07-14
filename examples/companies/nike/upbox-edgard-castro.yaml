@@ -1,0 +1,20 @@
+apiVersion: aws.platform.upbound.io/v1alpha1
+kind: Upbox
+metadata:
+  name: upbox-nike-edgard-castro
+  annotations:
+    render.crossplane.io/composition-path: apis/upbox/composition.yaml
+    render.crossplane.io/function-path: examples/functions.yaml
+    render.crossplane.io/definition-path: apis/upbox/definition.yaml
+spec:
+  # To connect from the AWS Console to the instance, see
+  # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-prerequisites.html
+  parameters:
+    # email: Edgard.Vasconcellosdecastro@nike.com
+    name: edgard-castro
+    company: nike
+    owner: team-nike-platform
+    networkId: upbox-aws-network
+    amiId: ami-0eab2975347a21ff0 # upbox-2025-3-23-v2
+    size: medium
+    publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5wGvLo5V4+osChU1n86j9Tm1/rotL+397M7AWvQTc1TPUi7yQQbXitPiTkz9WZUsfGDx38liwh6PWXZ4I4E++4S15sDNy4Wy4cGBPw3JRsv3l2WKILo/hDa3rN8+YqFD7wqBc1kyh946kbnO7A/BFn38/ijSGeJe6tt1EAqwlLCyhTg+zytJIBuzAWDyqaIGCGsqngtdZsb99roqJfA60O7K+ohVJ2kIFcqirjXSFd2f7vH8pMZ5Awzx75jClwPHgpxI4aESlcFLTM0W6yqwS7HqSUUTMgWREnsazTo8nmunHNVA8LiYdavhzTWrEAaNH6MJux7iG52ZoPId6ClRCUAujJOSLdkAft7ZaxstAuX+0Oh5a+MVx/TXk/G/KVl6KVSI3FkwlRGARm8I3v4/HkH7R4cFGtOos7hVeBtvk9bKqnoT4pY/bSKQSEAVRCdxsvJpkoLS/oG0MfkfdUPkvNhLotAaLXbKbj3BUPJKyBEAJXbGiIqSVuQ5lqbX197E= evasco@APQ92WV56F1E17

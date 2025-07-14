@@ -46,6 +46,8 @@ spec:
                       enum:
                         - micro
                         - small
+                        - medium
+                        - large
                       default: small
                     publicKey:
                       type: string

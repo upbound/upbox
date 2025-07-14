@@ -1,0 +1,19 @@
+apiVersion: aws.platform.upbound.io/v1alpha1
+kind: Upbox
+metadata:
+  name: upbox-upbound-steven
+  annotations:
+    render.crossplane.io/composition-path: apis/upbox/composition.yaml
+    render.crossplane.io/function-path: examples/functions.yaml
+    render.crossplane.io/definition-path: apis/upbox/definition.yaml
+spec:
+  # To connect from the AWS Console to the instance, see
+  # https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-prerequisites.html
+  parameters:
+    name: steven
+    company: upbound
+    owner: team-solutions-architects
+    networkId: upbox-aws-network
+    amiId: ami-0bee6b33d20556794 # old AMI for ssh tests
+    size: micro
+    publicKey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGuAjP6rWJ7v0dZ82XpOzsKlfd4z71rODIVEGLtHI4gX steven@upbound.io
