@@ -24,7 +24,7 @@ source "amazon-ebs" "upbox" {
   source_ami_filter {
     filters = {
       "virtualization-type" = "hvm"
-      "name"                = "ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-arm64-server-20250327"
+      "name"                = "ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-arm64-server-20250627"
       "root-device-type"    = "ebs"
     }
     owners      = ["099720109477"]
