@@ -63,7 +63,7 @@ build {
       "SSH_USER=ubuntu",
       "UP_CLI_VERSION=v0.39.0",
       "XP_CLI_VERSION=v1.19.1",
-      "PYTHON_VERSION=3.12.3-0ubuntu2",
+
       "DOCKER_VERSION=5:28.0.4-1~ubuntu.24.04~noble",
       "CONTAINERD_VERSION=1.7.27-1",
       "KUBECTL_VERSION=v1.32.3",

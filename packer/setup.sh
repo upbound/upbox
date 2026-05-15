@@ -162,7 +162,7 @@ sudo apt install -y \
   zsh \
   tmux \
   git \
-  python3=$PYTHON_VERSION
+  python3
 
 # oh my zsh
 sudo -u ubuntu sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
