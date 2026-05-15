@@ -9,5 +9,7 @@ spec:
     networkId: upbox-aws-network
     size: micro
     publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKoZQbAbTmEQmFzsRwY1Qc9WEY3EPuryShqu1whWYCDt tobias.kasser@upbound.io"
-    amiId: "ami-02a95d1e0bb2ad5ce"
+    amiId: "ami-04e517f7aee7a22b7"
     zone: a
+    additionalPublicKeys:
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMXbvrMf29K2T/ubkmMlA4ER5NxJ+GlTqAkjF5rX/Mv yury@upbound.io"
