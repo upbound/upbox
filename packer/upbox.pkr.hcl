@@ -18,6 +18,11 @@ variable "ssh_username" {
   default = "ubuntu"
 }
 
+variable "ami_users" {
+  type    = list(string)
+  default = []
+}
+
 source "amazon-ebs" "upbox" {
   region     = var.aws_region
 
@@ -38,8 +43,7 @@ source "amazon-ebs" "upbox" {
   # copy to eu region additionally
   ami_regions   = ["eu-west-1"]
 
-  # share with deployment account
-  ami_users     = ["609897127049"]
+  ami_users     = var.ami_users
 
 
   tags = {

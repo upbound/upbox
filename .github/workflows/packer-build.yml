@@ -43,6 +43,8 @@ jobs:
           packer validate upbox.pkr.hcl
 
       - name: Build AMI
+        env:
+          PKR_VAR_ami_users: '["609897127049"]'
         run: |
           cd packer
           packer build upbox.pkr.hcl
