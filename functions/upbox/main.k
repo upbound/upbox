@@ -43,6 +43,8 @@ _items = [
                 company = oxr.spec.parameters.company
                 owner = oxr.spec.parameters.owner
                 publicKey = oxr.spec.parameters.publicKey
+                networkId = oxr.spec.parameters.networkId
+                amiId = oxr.spec.parameters.amiId
             }
         }
         status = {
