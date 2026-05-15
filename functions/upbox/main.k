@@ -51,6 +51,22 @@ _items = [
             id = id
             instanceId = _ocds.instance?.Resource?.status?.atProvider?.id or ""
             publicIp = _ocds.instance?.Resource?.status?.atProvider?.publicIp or ""
+            conditions = [
+                {
+                    type = "Ready"
+                    status = "True"
+                    reason = "Available"
+                    lastTransitionTime = "1970-01-01T00:00:00Z"
+                }
+            ] if _ocds.instance?.Resource?.status?.atProvider?.publicIp else [
+                {
+                    type = "Ready"
+                    status = "False"
+                    reason = "Creating"
+                    message = "Waiting for EC2 instance to be provisioned"
+                    lastTransitionTime = "1970-01-01T00:00:00Z"
+                }
+            ]
         }
     }
     # pull region from network
