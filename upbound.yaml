@@ -1,14 +1,19 @@
-apiVersion: meta.dev.upbound.io/v1alpha1
+apiVersion: meta.dev.upbound.io/v2alpha1
 kind: Project
 metadata:
   name: configuration-upbox
 spec:
   dependsOn:
-  - provider: xpkg.upbound.io/upbound/provider-aws-ec2
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Provider
+    package: xpkg.upbound.io/upbound/provider-aws-ec2
     version: v1
-  - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Function
+    package: xpkg.upbound.io/crossplane-contrib/function-auto-ready
     version: '>=v0.3.0'
-  description: Upbox is a solution for providing automated cloud lab environments for 3rd Party Developers and Training Attendees.
+  description: Upbox is a solution for providing automated cloud lab environments
+    for 3rd Party Developers and Training Attendees.
   license: Apache-2.0
   maintainer: Upbound <support@upbound.io>
   readme: |
