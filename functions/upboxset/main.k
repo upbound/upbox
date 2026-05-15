@@ -19,13 +19,14 @@ _items = [
        spec = {
            parameters = {
                company = oxr.spec.parameters.company
-               owner = oxr.spec.parameters.owner  # Changed from networkId to owner
+               owner = oxr.spec.parameters.owner
                size = oxr.spec.parameters.size
                amiId = oxr.spec.parameters.amiId
                zone = oxr.spec.parameters.zone
                networkId = oxr.spec.parameters.networkId
                publicKey = oxr.spec.parameters.users[user].publicKey
                providerConfigName = oxr.spec.parameters.providerConfigName
+               **({anthropicApiKey = oxr.spec.parameters.anthropicApiKey} if oxr.spec.parameters?.anthropicApiKey else {})
            }
        }
     } for user in oxr.spec.parameters.users

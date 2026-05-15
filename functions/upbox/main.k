@@ -13,6 +13,12 @@ _metadata = lambda name: str -> any {
 
 id = "upbox-{}-{}".format(oxr.spec.parameters.company, oxr.metadata.name)
 
+_api_key = oxr.spec.parameters?.anthropicApiKey or ""
+_user_data = """#!/bin/bash
+echo 'export ANTHROPIC_API_KEY={key}' >> /home/ubuntu/.zshrc
+echo 'export ANTHROPIC_API_KEY={key}' >> /home/ubuntu/.bashrc
+""".format(key=_api_key) if _api_key else Undefined
+
 _vpc = Undefined
 
 if extraResources.vpc:
@@ -82,6 +88,7 @@ if _vpc:
                     tags = {
                         Name = id
                     }
+                    **({userData = _user_data} if _user_data else {})
                 }
                 providerConfigRef = {
                     name = oxr.spec.parameters.providerConfigName

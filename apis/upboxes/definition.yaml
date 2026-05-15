@@ -44,6 +44,9 @@ spec:
                   publicKey:
                     type: string
                     description: Public SSH key to upload.
+                  anthropicApiKey:
+                    type: string
+                    description: Anthropic API key injected into the shell environment for Claude Code sessions.
                   providerConfigName:
                     type: string
                     default: default
@@ -54,6 +57,8 @@ spec:
                   - company
                   - owner
                   - publicKey
+                  - networkId
+                  - amiId
                 type: object
             type: object
           status:

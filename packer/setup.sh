@@ -160,9 +160,30 @@ sudo apt install -y \
   lynx \
   yq \
   zsh \
+  tmux \
+  git \
   python3=$PYTHON_VERSION
 
 # oh my zsh
 sudo -u ubuntu sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 # default method of switching shell in install.sh doesn't work
 chsh ubuntu -s /usr/bin/zsh
+
+#######################
+# Install Node.js     #
+#######################
+
+echo "Installing Node.js $NODE_VERSION..."
+curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+echo "Node.js $(node --version) and npm $(npm --version) installed"
+
+######################
+# Install Claude Code #
+######################
+
+echo "Installing Claude Code..."
+sudo npm install -g @anthropic-ai/claude-code@$CLAUDE_CODE_VERSION
+
+echo "Claude Code $(claude --version) installed"
