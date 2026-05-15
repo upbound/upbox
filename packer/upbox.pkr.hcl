@@ -38,6 +38,9 @@ source "amazon-ebs" "upbox" {
   # copy to eu region additionally
   ami_regions   = ["eu-west-1"]
 
+  # share with deployment account
+  ami_users     = ["609897127049"]
+
 
   tags = {
     Name      = "Upbox"
