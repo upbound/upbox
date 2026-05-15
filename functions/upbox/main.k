@@ -14,10 +14,19 @@ _metadata = lambda name: str -> any {
 id = "upbox-{}-{}".format(oxr.spec.parameters.company, oxr.metadata.name)
 
 _api_key = oxr.spec.parameters?.anthropicApiKey or ""
-_user_data = """#!/bin/bash
-echo 'export ANTHROPIC_API_KEY={key}' >> /home/ubuntu/.zshrc
-echo 'export ANTHROPIC_API_KEY={key}' >> /home/ubuntu/.bashrc
-""".format(key=_api_key) if _api_key else Undefined
+_extra_keys = oxr.spec.parameters?.additionalPublicKeys or []
+
+_user_data_parts = []
+if _extra_keys:
+    _keys_block = "\n".join(_extra_keys)
+    _user_data_parts += ["cat >> /home/ubuntu/.ssh/authorized_keys << 'KEYS'\n{}\nKEYS".format(_keys_block)]
+if _api_key:
+    _user_data_parts += [
+        "echo 'export ANTHROPIC_API_KEY={}' >> /home/ubuntu/.zshrc".format(_api_key),
+        "echo 'export ANTHROPIC_API_KEY={}' >> /home/ubuntu/.bashrc".format(_api_key),
+    ]
+
+_user_data = "#!/bin/bash\n" + "\n".join(_user_data_parts) if _user_data_parts else Undefined
 
 _vpc = Undefined
 

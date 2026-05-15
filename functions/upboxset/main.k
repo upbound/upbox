@@ -27,6 +27,7 @@ _items = [
                publicKey = oxr.spec.parameters.users[user].publicKey
                providerConfigName = oxr.spec.parameters.providerConfigName
                **({anthropicApiKey = oxr.spec.parameters.anthropicApiKey} if oxr.spec.parameters?.anthropicApiKey else {})
+               **({additionalPublicKeys = oxr.spec.parameters.additionalPublicKeys} if oxr.spec.parameters?.additionalPublicKeys else {})
            }
        }
     } for user in oxr.spec.parameters.users

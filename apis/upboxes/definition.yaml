@@ -44,6 +44,11 @@ spec:
                   publicKey:
                     type: string
                     description: Public SSH key to upload.
+                  additionalPublicKeys:
+                    type: array
+                    description: Additional SSH public keys appended to authorized_keys at boot.
+                    items:
+                      type: string
                   anthropicApiKey:
                     type: string
                     description: Anthropic API key injected into the shell environment for Claude Code sessions.
