@@ -169,6 +169,9 @@ sudo -u ubuntu sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohm
 # default method of switching shell in install.sh doesn't work
 chsh ubuntu -s /usr/bin/zsh
 
+echo 'export TERM=xterm-256color' >> /home/ubuntu/.zshrc
+echo 'export TERM=xterm-256color' >> /home/ubuntu/.bashrc
+
 #######################
 # Install Node.js     #
 #######################
