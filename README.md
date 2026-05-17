@@ -155,6 +155,27 @@ kubectl get upbox \
     | yq '.items[] | "\(.metadata.name): \"ssh ubuntu@\(.status.publicIp)\""'
 ```
 
+## Claude Code
+
+Each Upbox comes with Claude Code pre-installed. After connecting via SSH, authenticate and optionally set up the Upbound marketplace:
+
+```bash
+# Authenticate with your Claude.ai subscription
+BROWSER=echo claude
+
+# Authenticate gh CLI (needed for private marketplace access)
+gh auth login
+
+# Add the Upbound Claude marketplace
+claude plugin marketplace add upbound/claude-marketplace
+```
+
+SSH with agent forwarding is recommended so `gh` can use your local SSH key:
+
+```bash
+ssh -A ubuntu@<public-ip>
+```
+
 ## Architecture
 
 Upbox uses Crossplane compositions to create managed AWS resources:
