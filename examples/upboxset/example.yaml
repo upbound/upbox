@@ -8,7 +8,7 @@ spec:
     owner: team-solutions
     networkId: upbox-aws-network
     size: micro
-    amiId: "ami-098dfdf40f3e094f2"
+    amiId: "ami-06bc36b2df9129f2e"
     users:
       yury:
         publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMXbvrMf29K2T/ubkmMlA4ER5NxJ+GlTqAkjF5rX/Mv yury@upbound.io"
