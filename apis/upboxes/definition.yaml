@@ -40,6 +40,9 @@ spec:
                     enum:
                       - micro
                       - small
+                      - medium
+                      - large
+                      - xlarge
                     default: small
                   publicKey:
                     type: string

@@ -39,6 +39,9 @@ spec:
                     enum:
                       - micro
                       - small
+                      - medium
+                      - large
+                      - xlarge
                     default: small
                   providerConfigName:
                     type: string
