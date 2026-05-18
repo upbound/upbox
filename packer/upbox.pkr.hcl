@@ -40,6 +40,13 @@ source "amazon-ebs" "upbox" {
   ssh_username  = var.ssh_username
   ami_name      = var.ami_name
 
+  launch_block_device_mappings {
+    device_name           = "/dev/sda1"
+    volume_size           = 20
+    volume_type           = "gp3"
+    delete_on_termination = true
+  }
+
   # copy to eu region additionally
   ami_regions   = ["eu-west-1"]
 
