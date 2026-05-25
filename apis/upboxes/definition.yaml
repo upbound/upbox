@@ -38,11 +38,11 @@ spec:
                     type: string
                     description: Size of the instance to create.
                     enum:
-                      - micro
-                      - small
-                      - medium
-                      - large
-                      - xlarge
+                    - micro
+                    - small
+                    - medium
+                    - large
+                    - xlarge
                     default: small
                   publicKey:
                     type: string
@@ -62,11 +62,11 @@ spec:
                     type: string
                     default: "a"
                 required:
-                  - company
-                  - owner
-                  - publicKey
-                  - networkId
-                  - amiId
+                - company
+                - owner
+                - publicKey
+                - networkId
+                - amiId
                 type: object
             type: object
           status:

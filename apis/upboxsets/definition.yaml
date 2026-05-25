@@ -37,11 +37,11 @@ spec:
                     type: string
                     description: Size of the instance to create.
                     enum:
-                      - micro
-                      - small
-                      - medium
-                      - large
-                      - xlarge
+                    - micro
+                    - small
+                    - medium
+                    - large
+                    - xlarge
                     default: small
                   providerConfigName:
                     type: string
@@ -66,11 +66,11 @@ spec:
                           type: string
                           description: Public SSH key to upload.
                 required:
-                  - company
-                  - owner
-                  - networkId
-                  - amiId
-                  - users
+                - company
+                - owner
+                - networkId
+                - amiId
+                - users
                 type: object
             type: object
           status:
