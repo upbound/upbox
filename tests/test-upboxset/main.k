@@ -19,7 +19,6 @@ _items = [
                         annotations = {
                             "crossplane.io/composition-resource-name" = "upbox-tobias"
                         }
-                        generateName = "example-"
                         labels = {
                             "crossplane.io/composite" = "example"
                             "upbox.aws.platform.upbound.io/company" = "upbound"
@@ -29,7 +28,7 @@ _items = [
                     }
                     spec = {
                         parameters = {
-                            amiId = "ami-0b3d63e88dd60b19c"
+                            amiId = "ami-06bc36b2df9129f2e"
                             company = "upbound"
                             networkId = "upbox-aws-network"
                             owner = "team-solutions"
@@ -45,7 +44,6 @@ _items = [
                         annotations = {
                             "crossplane.io/composition-resource-name" = "upbox-yury"
                         }
-                        generateName = "example-"
                         labels = {
                             "crossplane.io/composite" = "example"
                             "upbox.aws.platform.upbound.io/company" = "upbound"
@@ -55,7 +53,7 @@ _items = [
                     }
                     spec = {
                         parameters = {
-                            amiId = "ami-0b3d63e88dd60b19c"
+                            amiId = "ami-06bc36b2df9129f2e"
                             company = "upbound"
                             networkId = "upbox-aws-network"
                             owner = "team-solutions"

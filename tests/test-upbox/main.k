@@ -18,7 +18,6 @@ _items = [
                         annotations = {
                             "crossplane.io/composition-resource-name" = "instance"
                         }
-                        generateName = "example-"
                         labels = {
                             "crossplane.io/composite" = "example"
                             "upbox.aws.platform.upbound.io/id" = "upbox-mmc-example"
@@ -28,7 +27,7 @@ _items = [
                     spec = {
                         deletionPolicy = "Delete"
                         forProvider = {
-                            ami = "ami-047a5462e4631b060"
+                            ami = "ami-06bc36b2df9129f2e"
                             associatePublicIpAddress = True
                             instanceType = "t4g.micro"
                             keyName = "upbox-mmc-example"
@@ -60,7 +59,6 @@ _items = [
                         annotations = {
                             "crossplane.io/composition-resource-name" = "key"
                         }
-                        generateName = "example-"
                         labels = {
                             "crossplane.io/composite" = "example"
                             "upbox.aws.platform.upbound.io/id" = "upbox-mmc-example"
@@ -86,7 +84,6 @@ _items = [
                         annotations = {
                             "crossplane.io/composition-resource-name" = "sg"
                         }
-                        generateName = "example-"
                         labels = {
                             "crossplane.io/composite" = "example"
                         }
@@ -113,7 +110,6 @@ _items = [
                         annotations = {
                             "crossplane.io/composition-resource-name" = "sgr-outbound-all"
                         }
-                        generateName = "example-"
                         labels = {
                             "crossplane.io/composite" = "example"
                         }
@@ -144,7 +140,6 @@ _items = [
                         annotations = {
                             "crossplane.io/composition-resource-name" = "sgr-ssh"
                         }
-                        generateName = "example-"
                         labels = {
                             "crossplane.io/composite" = "example"
                         }
