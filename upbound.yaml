@@ -3,6 +3,8 @@ kind: Project
 metadata:
   name: configuration-upbox
 spec:
+  crossplane:
+    version: '>=v1.20.0 || >=v2.0.0-rc.0'
   dependsOn:
   - apiVersion: pkg.crossplane.io/v1
     kind: Configuration
