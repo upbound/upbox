@@ -75,8 +75,8 @@ build {
   provisioner "shell" {
     environment_vars = [
       "SSH_USER=ubuntu",
-      "UP_CLI_VERSION=v0.39.0",
-      "XP_CLI_VERSION=v1.19.1",
+      "UP_CLI_VERSION=v0.53.1",
+      "XP_CLI_VERSION=v2.4.1",
 
       "DOCKER_VERSION=5:28.0.4-1~ubuntu.24.04~noble",
       "CONTAINERD_VERSION=1.7.27-1",

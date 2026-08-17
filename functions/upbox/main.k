@@ -13,6 +13,19 @@ _metadata = lambda name: str -> any {
 
 id = "upbox-{}-{}".format(oxr.spec.parameters.company, oxr.metadata.name)
 
+# Root volume per instance size. The AMI ships a 20Gi root device, so micro and
+# small inherit it and the larger sizes grow it at launch. Bigger boxes are used
+# for work that fills a disk: building function images and running local dev
+# control planes both leave multi-gigabyte layers behind.
+_root_volume_sizes = {
+    micro = 20
+    small = 20
+    medium = 40
+    large = 60
+    xlarge = 60
+}
+_root_volume_size = _root_volume_sizes[oxr.spec.parameters.size] or 20
+
 _api_key = oxr.spec.parameters?.anthropicApiKey or ""
 _extra_keys = oxr.spec.parameters?.additionalPublicKeys or []
 
@@ -112,6 +125,10 @@ if _vpc:
                     }
                     ami = oxr.spec.parameters.amiId
                     keyName = id
+                    rootBlockDevice = [{
+                        volumeSize = _root_volume_size
+                        volumeType = "gp3"
+                    }]
                     tags = {
                         Name = id
                     }
